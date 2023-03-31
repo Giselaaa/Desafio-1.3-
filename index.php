@@ -15,11 +15,6 @@ if(isset($_POST['submit'])){
  VALUES('$nome','$cpf','$cep','$endereco','$numero','$bairro','$cidade')");
 }
 
-if($conexao == null){
-    echo "Erro ao coletar os dados";   
-}else{
-    echo "Cadastro concluido com sucesso";
-}
 ?>
 
 
@@ -196,8 +191,6 @@ if($conexao == null){
           <br><br>
             <div class="d-grid gap-2">
                 <button type="submit" name="submit" class="btn btn-warning" value="dados">Enviar</button>
-
-
             </div>
 
         </form> 
