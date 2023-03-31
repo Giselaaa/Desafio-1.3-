@@ -4,7 +4,7 @@ if(isset($_POST['submit'])){
 
  include_once('config.php');   
  $nome = ($_POST['nome']);
- $cpf = ($_POST['cpf']);                    //conexao via php com o banco
+ $cpf = ($_POST['cpf']);                    //conexao do php com o banco
  $cep = ($_POST['cep']);
  $endereco = ($_POST['endereco']);
  $numero = ($_POST['numero']);
@@ -15,6 +15,11 @@ if(isset($_POST['submit'])){
  VALUES('$nome','$cpf','$cep','$endereco','$numero','$bairro','$cidade')");
 }
 
+if($conexao == null){
+    echo "Erro ao coletar os dados";   
+}else{
+    echo "Cadastro concluido com sucesso";
+}
 ?>
 
 
@@ -24,7 +29,11 @@ if(isset($_POST['submit'])){
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.rtl.min.css" integrity="sha384-WJUUqfoMmnfkBLne5uxXj+na/c7sesSJ32gI7GfCk4zO4GthUKhSEGyvQ839BC51" crossorigin="anonymous">
-
+    <header>
+    <ul>
+  <li><a href="https://www.flashentregas.com.br/">Home</a></li>
+    </ul>
+    </header>
     <title>Cadastrar</title>
     <style>
 
@@ -33,7 +42,7 @@ if(isset($_POST['submit'])){
             background-position: center;
             background-repeat: no-repeat;                       /*Estilo da página*/
             background-position: center;
-            opacity: 0.7;
+          
             /*background-color: rgb(222, 184, 135);*/
         }
 
@@ -41,7 +50,30 @@ if(isset($_POST['submit'])){
             color: #787773;
         }
 
-        
+        ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: rgb(0, 0, 0);
+        }
+
+        li {
+        float: left;
+        }
+
+        li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;                
+        }
+
+        li a:hover {
+        background-color: black;
+        }
+                
 
     </style>
 
@@ -114,10 +146,17 @@ if(isset($_POST['submit'])){
 
 
     </script>
+    
+            <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+        </div>
+        </nav>
+    
   </head>
   <body class="bg">
-  
-    <h1>Cadastro do entegrador</h1><br><br>
+    
+    <h1>Cadastro do entegrador</h1>
+    <br><br>
     <br><br>
     <div class="container-sm">
     <!--img src="./img/flash-logo.png" alt="flash-logo"-->
@@ -154,9 +193,11 @@ if(isset($_POST['submit'])){
             <div class="mb-3">
                 <input type="text" name="cidade" class="form-control" id="cidade" placeholder="Cidade">
             </div>
-          
+          <br><br>
             <div class="d-grid gap-2">
-                <button type="submit" name="submit" class="btn btn-warning" value="dados">Enviar</button> 
+                <button type="submit" name="submit" class="btn btn-warning" value="dados">Enviar</button>
+
+
             </div>
 
         </form> 
